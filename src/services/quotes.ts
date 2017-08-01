@@ -26,4 +26,13 @@ export class QuotesService{
         // returns a copy of the array of quotes so not to access the direct array bc its private
         return this.favoriteQuotes.slice();
     }
+
+    // to return if the quote is a fav or not fav
+    isQuoteFavorite(quote: Quote){
+        // the favorite quotes find method takes a function for an argument
+        // find if there is a quote that matches this in the favorite
+        return this.favoriteQuotes.find((quoteEl: Quote) => {
+            return quoteEl.id == quote.id;
+        });
+    }
 }
