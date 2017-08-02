@@ -30,7 +30,7 @@ export class QuotesPage implements OnInit {
   //   this.quoteGroup = this.navParams.data;
   // }
 
-  onAddToFavorite(selectedQuote: Quote) {
+  onAddToFavorites(selectedQuote: Quote) {
     // the create method take a JS object as an argument
     const alert = this.alertCtrl.create({
       title: 'Add Quote',
@@ -56,5 +56,16 @@ export class QuotesPage implements OnInit {
     });
 
     alert.present();
+  }
+
+  // to show unfavorite if the quote is already in favorites page
+  onRemoveFromFavorites(quote: Quote)
+  {
+    this.quotesService.removeQuoteFromFavorites(quote);
+  }
+
+  // helper method that checks with the service if the quote is fav then returns the value
+  isFavorite(quote: Quote){
+    return this.quotesService.isQuoteFavorite(quote);
   }
 }
