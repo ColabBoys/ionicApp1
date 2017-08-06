@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Quote } from "../../data/quote.interface";
 import { QuotesService } from "../../services/quotes";
+import { SettingsService } from "../../services/settings";
 import { ModalController } from "ionic-angular";
 import { QuotePage } from "../quote/quote";
 
@@ -11,7 +12,7 @@ import { QuotePage } from "../quote/quote";
 export class FavoritesPage {
   quotes: Quote[];
 
-  constructor(private quotesService: QuotesService, private modalCtrl: ModalController) { }
+  constructor(private quotesService: QuotesService, private modalCtrl: ModalController, private settingsService: SettingsService) { }
 
   ionViewWillEnter() {
     this.quotes = this.quotesService.getFavoriteQuotes();
@@ -60,6 +61,11 @@ export class FavoritesPage {
     // modal.willLeave.subscribe(
     //   (remove: boolean) => console.log(remove)
     // );
+  }
+
+  // get background from toggle
+  getBackground(){
+    return this.settingsService.isAltBackground() ? 'altQuoteBackground' : 'quoteBackground';
   }
 
   // MenuToggle directive removes the need to add this on every page you need this on 
