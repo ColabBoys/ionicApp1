@@ -61,4 +61,13 @@ export class FavoritesPage {
     //   (remove: boolean) => console.log(remove)
     // );
   }
+
+  // MenuToggle directive removes the need to add this on every page you need this on 
+  // can remove the other injections and dependencies and imports as well
+  // Just add the menuToggle property to the button tag in the html
+  // Menu open
+    // onOpenMenu(){
+    //   // will open the menu configured in the
+    //   this.menuCtrl.open();
+    // }
 }
